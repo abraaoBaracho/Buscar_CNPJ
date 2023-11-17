@@ -45,3 +45,13 @@
   width: 300px;
   height: 100px;
 }
+#retorno{
+  border: 1px solid;
+  width: 100%;
+  border-collapse: collapse;
+  color: black;
+}
+tbody, td{
+  border: 1px solid;
+}
+tr:nth-child(even) {background-color: #8f8b8b;}
