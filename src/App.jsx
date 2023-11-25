@@ -3,12 +3,14 @@
 import './css/App.css'
 import axios from 'axios';
 import { useState } from "react";
+import Img from './componets/Img'
+
+
 
 
 function App() {
   const [cnpj, setCnpj] = useState("");
   const [dados, setDados] = useState([]);
-  const [token, setToken] = useState("");
   const [corTexto, setCorTexto] = useState("black");
   const [tamanho, setTamanho] = useState(0);
   const [mensagen, setMensagen] = useState("");
@@ -41,7 +43,7 @@ function App() {
           console.error("Erro na busca do CNPJ", error);
         });
     } else {
-      alert("Erro confira o CNPJ digitado")
+      alert("Erro, confira o CNPJ digitado")
     }
   };
   const linhasTabela = Object.entries(dados).map(([chave, valor]) => (
@@ -52,19 +54,23 @@ function App() {
   ));
   return (
     <>
-      <div>
-        <fieldset>
-          <legend>Buscar CNPJ</legend>
-          <label htmlFor="cnpj">Digite o CNPJ que deseja buscar</label>
+    <div>
+      <Img />
+    </div>
+      <div> 
+        <fieldset id='form'>
+         <br/>
+          <label htmlFor="cnpj" id='cnpjLabel'>Digite o CNPJ que deseja pesquisar</label>
           <br />
-          <input type="number" id='cnpj' onChange={inputCnpj} style={{ color: corTexto }} placeholder='digite apenas numeros' />
+          <input type="number" id='cnpj' onChange={inputCnpj} style={{ color: corTexto}} placeholder='digite apenas números' />
           <br />
-          <span style={{ color: corTexto }}>{mensagen}</span>
-          <p id='mostrar' style={{ color: corTexto }}>CNPJ: {cnpj} </p>
+         
         </fieldset>
-        <button onClick={buscar}>Buscar</button>
+        <br />
+        <button id='buscar' onClick={buscar}><strong>Pesquisar</strong></button>
         
       </div>
+      <br />
       <table id='retorno'>
           <tbody>
             {linhasTabela}
