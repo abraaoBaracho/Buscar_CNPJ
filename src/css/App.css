@@ -17,15 +17,10 @@
 }
 
 body {
-  /* imagem */
- background-image:url('TecladoMaoDigitando.jpg');
-  /* imagem na tela inteira */
+ background-image:url('src/img/TecladoMaoDigitando.jpg');
   background-size: cover;
-  /* posição da imagem  */
   background-position: center;
-  /* altura mínima */
   min-height: 100vh;
-  /* Adicione outras propriedades de estilo conforme necessário */
   margin: 0;
   display: flex;
   align-items: center;
@@ -38,15 +33,20 @@ body {
   background-color: rgb(253, 254, 255);
   border-radius: 20px;
   padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   
+}
+#img{
+  padding-bottom: 20px;
 }
 #buscar{
   
   border: none;
   border-radius: 20px;
-  color:  rgb(26, 26, 95);;
+  color:  rgb(26, 26, 95);
   padding: 15px 32px;
   font-size: 20px;
 
@@ -67,13 +67,6 @@ body {
   background-color: rgb(246, 249, 252);
   
 }
- td{
-  border-style:dashed ;  
-  color: rgb(26, 26, 95);
- 
-}
-
-
 .footer {
   width: 100%;
   border-collapse: collapse;

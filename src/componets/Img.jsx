@@ -1,7 +1,7 @@
 import '../css/App.css'
-function Img(params) {
+function Img() {
     return(
-        <img id="sigla" src="src/componets/siglaCNPJ.jpg" alt="erro" />
+        <img id="sigla" src="src/img/siglaCNPJ.jpg" alt="erro" />
     )
 }
 
