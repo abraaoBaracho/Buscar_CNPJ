@@ -8,7 +8,6 @@ import Img from './componets/Img';
 
 function App() {
 
-
   const [cnpj, setCnpj] = useState("");
   const [dados, setDados] = useState([]);
   const [tamanho, setTamanho] = useState(0);
@@ -33,7 +32,7 @@ function App() {
       setInputCorreto(false)
       setInput(true)
 
-    }
+    }  
   };
 
   const limpar = () => {
@@ -50,6 +49,13 @@ function App() {
       setBotaoAnimado(true);
       setBotaoPadrao(false);
 
+/* Basicamente, essa parte do código lida com a requisição para a API, 
+atualiza o estado da aplicação com os dados retornados e controla a exibição desses 
+dados na interface do usuário. */
+
+/* axios.get é o que faz a ligação do front ao back, quando apertarmos o botao pesquisar,
+ele vai buscar os dados associados e entregar ao usuario */
+
       axios.get(`https://api-publica.speedio.com.br/buscarcnpj?cnpj=${cnpj}`)
         .then(response => {
           setDados(response.data);
@@ -57,11 +63,10 @@ function App() {
             setBotaoAnimado(false);
             setBotaoPadrao(true);
             if (dados.length === 0) {
-              setInputErro(true)
+              setInputErro(false)
               setInput(false)
               setInputCorreto(false)
-            }else{
-}
+            }
           }, 400);
         })
         .catch(error => {
@@ -88,6 +93,7 @@ function App() {
       <div id='img'>
       <Img />
       </div>
+      
       <div>
         <form id='form'>
 
