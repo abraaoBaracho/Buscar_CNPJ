@@ -1,17 +1,13 @@
 import './css/App.css';
-import React, { useRef, useState, useEffect } from 'react';
+import React, {useState } from 'react';
 import axios from 'axios';
-import Img from './componets/Img';
 import ButtonBusca from './componets/ButtonBusca';
 import { Table } from 'reactstrap';
-import { FormGroup, Label, FormFeedback, Input, FormText } from 'reactstrap';
+import { FormGroup, Label, FormFeedback, Input } from 'reactstrap';
+import Img from './componets/Img';
 
 function App() {
-  const inputRef1 = useRef(null);
-  const inputRef2 = useRef(null);
-  const inputRef3 = useRef(null);
 
-  
 
   const [cnpj, setCnpj] = useState("");
   const [dados, setDados] = useState([]);
@@ -27,23 +23,26 @@ function App() {
     setCnpj(inputValue);
     setTamanho(inputValue.length)
 
-    if (inputValue.length < 14 && inputValue.length > 0 || inputValue.length > 14) {
-      setInputErro(true)
-      setInput(false)
-      setInputCorreto(false)
-     // inputRef3.current.focus();
-    } else if (inputValue.length === 14) {
+    if (inputValue.length === 14) {
       setInputErro(false)
       setInput(false)
       setInputCorreto(true)
-     // inputRef2.current.focus();
+
     } else if (inputValue.length === 0) {
       setInputErro(false)
       setInputCorreto(false)
       setInput(true)
-    //  inputRef1.current.focus();
+
     }
   };
+
+  const limpar = () => {
+    setCnpj("")
+    setDados([])
+    setInputErro(false)
+    setInput(true)
+    setInputCorreto(false)
+  }
 
   const buscar = () => {
 
@@ -57,6 +56,11 @@ function App() {
           setTimeout(() => {
             setBotaoAnimado(false);
             setBotaoPadrao(true);
+            if (dados.length === 0) {
+              setInputErro(true)
+              setInput(false)
+              setInputCorreto(false)
+            }
           }, 400);
         })
         .catch(error => {
@@ -68,6 +72,7 @@ function App() {
       alert("Erro, confira o CNPJ digitado")
     }
 
+
   };
   const linhasTabela = Object.entries(dados).map(([chave, valor]) => (
     <tr key={chave}>
@@ -75,16 +80,13 @@ function App() {
       <td>{valor}</td>
     </tr>
   ));
-  
-   
-  
+
+
   return (
     <>
-
       <div id='img'>
-        <Img />
+      <Img />
       </div>
-
       <div>
         <form id='form'>
 
@@ -92,19 +94,19 @@ function App() {
             Digite o CNPJ que deseja pesquisar
           </Label>
           {input &&
-            <Input id='cnpj' onChange={inputCnpj} type='number' ref={inputRef1} />
+            <Input id='cnpj' onChange={inputCnpj} type='number' />
           }
           <br />
 
           {inputCorreto &&
             <FormGroup className="position-relative">
-              <Input valid id='cnpj' onChange={inputCnpj} type='number' value={cnpj} ref={inputRef2} />
+              <Input valid id='cnpj' onChange={inputCnpj} type='number' value={cnpj} />
             </FormGroup>
           }
 
           {inputErro &&
             <FormGroup className="position-relative">
-              <Input invalid id='cnpj' onChange={inputCnpj} type='number' value={cnpj} ref={inputRef3} />
+              <Input invalid id='cnpj' onChange={inputCnpj} type='number' value={cnpj} />
               <FormFeedback tooltip>
                 CNPJ invalido
               </FormFeedback>
@@ -112,25 +114,23 @@ function App() {
           }
         </form>
         <br />
-        {botaoPadrao && <button id='buscar' onClick={buscar}><strong>Pesquisar</strong></button>}
-        {botaoAnimado && <ButtonBusca />}
-
+        <div>
+          {botaoPadrao && <button id='buscar' onClick={buscar}><strong>Pesquisar</strong></button>}
+          {botaoAnimado && <ButtonBusca />}
+          <button id='limpar' onClick={limpar}>Limpar</button>
+        </div>
       </div>
 
-      <br />
+      <div id='tabela'>
+        <Table
+          hover
+        >
+          <tbody>
+            {linhasTabela}
+          </tbody>
+        </Table>
+      </div>
 
-
-
-
-      <br />
-
-      <Table
-        hover
-      >
-        <tbody>
-          {linhasTabela}
-        </tbody>
-      </Table>
     </>
   )
 }

@@ -17,7 +17,7 @@
 }
 
 body {
- background-image:url('src/img/TecladoMaoDigitando.jpg');
+ background-image:url('https://cdn-prod.voxy.com/wp-content/uploads/2018/09/glenn-carstens-peters-203007-unsplash-1024x681.jpg');
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -49,6 +49,7 @@ body {
   color:  rgb(26, 26, 95);
   padding: 15px 32px;
   font-size: 20px;
+  margin-right: 10px;
 
  
 }
@@ -60,15 +61,13 @@ body {
 #cnpjLabel{
   font-size: x-large;
 }
-#retorno{
-  width: 100%;
- border-radius: 20px;
-  color: rgb(255, 250, 250);
-  background-color: rgb(246, 249, 252);
-  
+#tabela{
+padding-top: 20px;
 }
-.footer {
-  width: 100%;
-  border-collapse: collapse;
-  color: white;
+#limpar{
+  border: none;
+  border-radius: 20px;
+  color:  rgb(26, 26, 95);
+  padding: 15px 32px;
+  font-size: 20px;
 }
