@@ -60,7 +60,8 @@ function App() {
               setInputErro(true)
               setInput(false)
               setInputCorreto(false)
-            }
+            }else{
+}
           }, 400);
         })
         .catch(error => {
