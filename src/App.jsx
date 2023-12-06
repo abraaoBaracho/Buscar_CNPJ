@@ -69,9 +69,9 @@ ele vai buscar os dados associados e entregar ao usuario */
           console.error("Erro na busca do CNPJ", error);
           setBotaoAnimado(false);
           setBotaoPadrao(true);
-          setInputErro(true)
-          setInput(false)
-          setInputCorreto(false)
+          setInputErro(true);
+          setInput(true);
+          setInputCorreto(false);
         });
     } else {
       alert("Erro, confira o CNPJ digitado")
