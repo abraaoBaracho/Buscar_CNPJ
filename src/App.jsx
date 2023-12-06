@@ -70,7 +70,7 @@ ele vai buscar os dados associados e entregar ao usuario */
           setBotaoAnimado(false);
           setBotaoPadrao(true);
           setInputErro(true);
-          setInput(true);
+          setInput(false);
           setInputCorreto(false);
         });
     } else {
