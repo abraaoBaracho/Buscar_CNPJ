@@ -62,17 +62,16 @@ ele vai buscar os dados associados e entregar ao usuario */
           setTimeout(() => {
             setBotaoAnimado(false);
             setBotaoPadrao(true);
-            if (dados.length === 0) {
-              setInputErro(false)
-              setInput(false)
-              setInputCorreto(false)
-            }
+            
           }, 400);
         })
         .catch(error => {
           console.error("Erro na busca do CNPJ", error);
           setBotaoAnimado(false);
           setBotaoPadrao(true);
+          setInputErro(true)
+          setInput(false)
+          setInputCorreto(false)
         });
     } else {
       alert("Erro, confira o CNPJ digitado")
