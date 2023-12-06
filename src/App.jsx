@@ -39,7 +39,7 @@ function App() {
     setCnpj("")
     setDados([])
     setInputErro(false)
-    setInput(true)
+    setInput(false)
     setInputCorreto(false)
   }
 
